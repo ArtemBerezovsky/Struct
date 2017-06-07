@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Structs.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +18,44 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    Structs *structs = [[Structs alloc]init];
+    CGPoint point1 = [structs addPointRandom];
+    CGPoint point2 = [structs addPointRandom];
+    CGPoint point3 = [structs addPointRandom];
+    CGPoint point4 = [structs addPointRandom];
+    CGPoint point5 = [structs addPointRandom];
+    CGPoint point6 = [structs addPointRandom];
+    
+    NSValue *value1 = [NSValue valueWithCGPoint: point1];
+    NSValue *value2 = [NSValue valueWithCGPoint: point2];
+    NSValue *value3 = [NSValue valueWithCGPoint: point3];
+    NSValue *value4 = [NSValue valueWithCGPoint: point4];
+    NSValue *value5 = [NSValue valueWithCGPoint: point5];
+    NSValue *value6 = [NSValue valueWithCGPoint: point6];
+
+    
+    NSArray *arrayPoint = [NSArray arrayWithObjects:value1, value2, value3, value4, value5, value6, nil];
+    
+    
+    for (NSInteger iCount = 0; iCount < arrayPoint.count; iCount++)
+    {
+        NSValue *valueTemp = [arrayPoint objectAtIndex: iCount];
+        CGPoint pointTemp = [valueTemp CGPointValue];
+        if ((pointTemp.x > 3 & pointTemp.x < 7) & (pointTemp.y > 3 & pointTemp.y < 7))
+        {
+            NSLog(@"point = %@ greatShot",NSStringFromCGPoint(pointTemp));
+        }
+        else
+        {
+            NSLog(@"point = %@", NSStringFromCGPoint(pointTemp));
+        }
+        
+    }
+    
+    
     return YES;
+    
 }
 
 
