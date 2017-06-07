@@ -12,7 +12,7 @@
 
 - (CGPoint) addPointRandom
 {
-    CGPoint pointTemp = CGPointMake(arc4random_uniform(7), arc4random_uniform(7));
+    CGPoint pointTemp = CGPointMake(arc4random_uniform(10), arc4random_uniform(10));
     
     return pointTemp;
 }

@@ -21,6 +21,7 @@
     
     Structs *structs = [[Structs alloc]init];
     CGPoint point1 = [structs addPointRandom];
+
     CGPoint point2 = [structs addPointRandom];
     CGPoint point3 = [structs addPointRandom];
     CGPoint point4 = [structs addPointRandom];
@@ -34,12 +35,14 @@
     NSValue *value5 = [NSValue valueWithCGPoint: point5];
     NSValue *value6 = [NSValue valueWithCGPoint: point6];
 
-    
+#pragma mark version 1
     NSArray *arrayPoint = [NSArray arrayWithObjects:value1, value2, value3, value4, value5, value6, nil];
     
-    
+
+    NSLog(@"version 1");
     for (NSInteger iCount = 0; iCount < arrayPoint.count; iCount++)
     {
+        
         NSValue *valueTemp = [arrayPoint objectAtIndex: iCount];
         CGPoint pointTemp = [valueTemp CGPointValue];
         if ((pointTemp.x > 3 & pointTemp.x < 7) & (pointTemp.y > 3 & pointTemp.y < 7))
@@ -52,6 +55,30 @@
         }
         
     }
+    
+#pragma mark version 2
+
+    CGRect centerRect= CGRectMake(3, 3, 3, 3);
+    
+    BOOL niceShot = NO;
+    NSLog(@"version 2");
+    for (NSInteger jCount = 0; jCount < arrayPoint.count; jCount++)
+    {
+        
+        NSValue *valueTemp2 = [arrayPoint objectAtIndex: jCount];
+        CGPoint pointTemp2 = [valueTemp2 CGPointValue];
+        niceShot = CGRectContainsPoint(centerRect, pointTemp2);
+        if ((niceShot))
+        {
+           NSLog(@"point = %@ niceShot",NSStringFromCGPoint(pointTemp2));
+        }
+        else
+        {
+           NSLog(@"point = %@", NSStringFromCGPoint(pointTemp2));
+        }
+    }
+    
+    
     
     
     return YES;
